@@ -3,7 +3,6 @@
  * Copyright (c) 2014 apicloud.com
  */
 (function(window){
-    //修改成自己的网址 201806290624
     var u = {};
     var isAndroid = (/android/gi).test(navigator.appVersion);
     var uzStorage = function(){
@@ -583,7 +582,7 @@
     };
 
 /*end*/
-     u.fixTabBar = function(el){ if(!u.isElement(el)){ console.warn('$api.fixTabBar Function need el param, el param must be DOM Element'); return 0; } el.style.paddingBottom = api.safeArea.bottom + 'px'; return el.offsetHeight; }
+
 
     window.$api = u;
 

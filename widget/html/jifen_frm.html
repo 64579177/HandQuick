@@ -17,10 +17,11 @@
     <div class="myui-jifen-bt">
       <div class="my-jien-btn aui-btn aui-btn-info aui-btn-block aui-btn-sm" tapmode onclick="openWin('share_win')">获取积分</div>
     </div>
-    <div id="bili" class="myui-jifen-2">
+    <div id="bili" class="myui-jifen-2">  </div>
 
-    </div>
-    <div class="aui-bar aui-bar-btn" style="width:80%;" type="count" id="demo">
+<br>
+
+    <div class="aui-bar aui-bar-btn" style="width:60%; " type="count" id="demo">
         <div class="aui-bar-btn-item aui-font-size-20">
             <i class="aui-iconfont aui-icon-minus"></i>
         </div>
@@ -45,12 +46,16 @@
   var api_url = localStorage.getItem('api_url');
 
   apiready = function(){
+
     api.parseTapmode();
     api.showProgress({
         title: '正在刷新',
         text: '请稍等...',
         modal: false
     });
+
+
+
     api.ajax({
         url: api_url+'/login/login/sign.html',
         method: 'get',
@@ -66,7 +71,15 @@
 
         } else {
           api.hideProgress();
+          /*
             alert('网络错误');
+        */
+            api.toast({
+                msg: '网络错误',
+                duration: 5000
+            });
+
+
         }
     });
 
@@ -82,12 +95,18 @@
         if (ret) {
           var bili = $api.byId('bili');
           jifenbi = ret.sign;
-          bili.innerHTML = ret.sign+'积分可以兑换1天会员资格哦！';
+          bili.innerHTML = ret.sign+'积分即可兑换1天会员';
           api.hideProgress();
 
         } else {
           api.hideProgress();
+          /*
           alert('获取失败');
+          */
+          api.toast({
+              msg: '获取失败',
+              duration: 5000
+          });
 
         }
     });
@@ -111,15 +130,33 @@
     },function(ret, err){
         if (ret) {
             if (ret.code == 0) {
-              alert( ret.msg );
+              api.toast({
+                  msg: ret.msg,
+                  duration: 5000
+              });
+
             }else {
               getTime();
+              /*
               alert( '成功兑换'+share+'天会员' );
+              */
+              api.toast({
+                  msg: '成功兑换'+share+'天会员',
+                  duration: 10000
+              });
+
             }
 
         } else {
           api.hideProgress();
+          /*
             alert( '网络错误' );
+            */
+            api.toast({
+                msg: '网络错误',
+                duration: 5000
+            });
+
         }
     });
   }

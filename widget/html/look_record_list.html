@@ -71,9 +71,38 @@
 			margin-top:10px;
 
 		}
+
+
+	/*新加空提示信息*/
+
+	.m-noRecord {
+    padding: .395rem 0 0;
+    text-align: center;
+}
+
+.m-noRecord .c-icon-noRecord {
+    background: url(../image/app/Browsehistory.png) no-repeat;
+    background-size: cover;
+		width: 5rem;
+    height: 4.6rem;
+    /* margin: .485rem auto 0; */
+    margin: 0 auto;
+	  margin-top: 50px;
+		opacity:0.4;    /*图片透明度*/
+		filter:alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+}
+.m-noRecord .c-info {
+    color: #cecfce;
+    line-height: 4rem;
+    padding: .25rem 0;
+    font-size: .8rem;
+}
+
+
     </style>
 </head>
 <body>
+
 	<ul id="list" class="list">
 		<script id="list_template" type="text/x-dot-template">
 			<li onclick="go_detail('{{=it.url}}', '{{=it.title}}');">
@@ -105,12 +134,16 @@
 
 	function update(){
 		api.ajax({
-	        url:'http://vip.nmgdz.com/login/login/newjilu?uid=' + localStorage.getItem('user_id')
+	        url:'http://vip.nmgdz.com//login/login/newjilu?uid=' + localStorage.getItem('user_id')
         },function(ret,err){
         	//coding...
         	if(ret.code==0){
         		//$("#list").empty();
-        		$("#list").html('<div  class="empty">'+ ret.msg +'</div>');
+      //  		$("#list").html('<div  class="empty">'+ ret.msg +'</div>');
+ 		$("#list").html('<section class="m-noRecord"><div class="c-icon-noRecord"></div> <div class="c-info">看过的那些精彩视频会保存在这里</div></section>');
+
+
+
         		return;
         	}
 

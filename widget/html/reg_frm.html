@@ -8,13 +8,20 @@
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css"/>
     <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <style type="text/css">
+    	.myui-from {
+padding-top: 5rem;
+width: 80%;
+margin: auto;
+}
+    </style>
 </head>
 <body class="login-bg2">
   <header class="aui-bar aui-bar-nav" id="aui-header" style="background-color:rgba(0,0,0,0) !important">
       <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
-            <span class="aui-iconfont aui-icon-left" style="color:#FFF">返回</span>
+          <span class="aui-iconfont aui-icon-left"></span>
       </a>
-      <div id="title" class="aui-title">注册</div>
+     <div id="title" class="aui-title">注册</div>
   </header>
 
 
@@ -22,22 +29,18 @@
     <ul class="myui-from-list">
       <li class="myui-from-list-item">
         <div class="myui-code">
-          <input id="username" type="tel"  minlength="11" maxlength="11" placeholder="填写手机号码" class="myui-from-list-item-input">
-          <!--<button id="btn1" type="button" name="button" style="width:20%;float:left;height: 2.2rem;" class="myui-from-code-button" onclick="getCode()">获取</button>-->
+          <input id="username" type="tel"  minlength="11" maxlength="11" placeholder="输入手机号码" class="myui-from-list-item-input">
+           <!--<button id="btn1" type="button" name="button" style="width:20%;float:left;height: 2.2rem;" class="myui-from-code-button" onclick="getCode()">获取</button>-->
         </div>
       </li>
       <li class="myui-from-list-item">
-        <input id="yzcode" type="tel" minlength="6" maxlength="6" placeholder="短信验证码" class="myui-from-list-item-input" style="display:none">
-      </li>
+             <input id="password" type="password" placeholder="设置密码" class="myui-from-list-item-input">
       <li class="myui-from-list-item">
-        <input id="password" type="password" placeholder="设置密码" class="myui-from-list-item-input">
-      </li>
-	    <li class="myui-from-list-item">
         <input id="password_reg" type="password" placeholder="再输入一次密码" class="myui-from-list-item-input">
       </li>
-       <!--li class="myui-from-list-item">
+       <li class="myui-from-list-item">
         <input id="share" type="tel" minlength="6" maxlength="6" placeholder="邀请码(选填)" class="myui-from-list-item-input">
-      </li-->
+      </li>
       <li class="myui-from-list-item">
         <button id="btn2" type="button" name="button" class="myui-from-list-item-button" onclick="toReg()">立即注册</button>
       </li>
@@ -66,7 +69,6 @@
     function toReg(){
       var username = $api.val($api.byId('username'));
       var password = $api.val($api.byId('password'));
-	  var password_reg = $api.val($api.byId('password_reg'));
       var yzcode = $api.val($api.byId('yzcode'));
       var share = $api.val($api.byId('share'));
       if(username == ''){
@@ -76,43 +78,15 @@
         });
         return;
       }
-      if(password == '' || password_reg == ''){
+
+      if(username.length != 11){
         api.alert({
             title: '警告！',
-            msg: '请输入密码',
+            msg: '请输入正确的手机号码',
         });
         return;
       }
 
-       //if(share == ''){
-        // api.alert({
-        //     title: '警告！',
-        //     msg: '请输入邀请码',
-        // });
-        // return;
-       //}
-      if(username.length < 11){
-        api.alert({
-            title: '警告！',
-            msg: '请输入11位手机号码',
-        });
-        return;
-      }
-
-	  if ($api.byId('password').value != $api.byId('password_reg').value) {
-                $api.byId('password_reg').focus();
-                api.toast({
-                    msg : '两次密码不一致，请重新输入!'
-                });
-                return;
-                 }
-      //if(yzcode != code_data){
-      //  api.alert({
-      //      title: '错误提示',
-      //      msg: '您输入的验证码不正确',
-      //  });
-      //  return;
-      //}
       //if(localStorage.getItem('reg_name') == username){
       //}else {
         //api.alert({
@@ -120,13 +94,13 @@
        //     msg: '手机号输入不一致',
        // });
        // return;
-     // }
+     // }  
       user = $api.val($api.byId('username'));
       pass = $api.val($api.byId('password'));
-	  pass02 = $api.val($api.byId('password_reg'));
       api.showProgress({
           title: '注册中...',
           text: '请稍等...',
+          
           modal: false
       });
       api.ajax({
@@ -135,10 +109,13 @@
           data: {
               values: {
                   name: username,
-                  password:password
+                  password:password,
+				  share_ma:share,
+				  type:'App独立注册'
               }
           }
       },function(ret, err){
+      	//alert(ret)
           if (ret) {
               if (ret.code == 0) {
                 api.hideProgress();
@@ -151,12 +128,12 @@
                 api.hideProgress();
                 api.alert({
                     title: '注册成功！',
-                    msg: '已自动获取账号，请登陆！',
+                    msg: '当前身份：体验会员',
                 });
                 api.closeWin({
                     name: 'login'
                 });
-                openLogin();
+                //openLogin();
 
 
                 api.ajax({
@@ -269,7 +246,7 @@
       var content = escape('#code#='+code_data);
       //alert(code_data);
       api.ajax({
-          url: 'http://v.juhe.cn/sms/send?mobile='+username+'&tpl_id=88888&tpl_value='+content+'&key=7e760dfa7b2aefdb390b229bd874b349',
+          url: 'http://v.juhe.cn/sms/send?mobile='+username+'&tpl_id=118410&tpl_value='+content+'&key=34f64020b8376b88770b342f97869e04',
           method: 'get'
       },function(ret, err){
         // if (ret) {

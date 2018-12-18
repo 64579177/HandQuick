@@ -117,7 +117,10 @@ img {
 
 .sp-content .bigImg .getVip button {
 	padding-left: 0;
+	/*
 	background-color: #f60;
+	*/
+	background: linear-gradient(to right,#ff5e3e 0,#ff1679 100%);
 	color: #fff
 }
 

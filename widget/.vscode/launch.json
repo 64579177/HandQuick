@@ -5,11 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
+            "search.exclude": {
+                "system/": true,
+                "!/system/**/*.ps*": true
+            }
+        },
+        {
+            "type": "node",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8086",
-            "webRoot": "${workspaceFolder}"
+            "name": "启动程序",
+            "program": "${file}"
         }
     ]
 }

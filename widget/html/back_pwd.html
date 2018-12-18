@@ -28,7 +28,7 @@
 <body class="login-bg2">
   <header class="aui-bar aui-bar-nav" id="aui-header" style="background-color:rgba(0,0,0,0) !important">
       <a class="aui-btn aui-pull-left" tapmode onClick="closeWin()">
-            <span class="aui-iconfont aui-icon-left" style="color:#FFF">返回</span>
+          <span class="aui-iconfont aui-icon-left"></span>
       </a>
       <div id="title" class="aui-title">修改密码</div>
   </header>
@@ -209,7 +209,7 @@
       var content = escape('#code#='+code_data);
       //alert(content);
       api.ajax({
-          url: 'http://vip.nmgdz.com/login/login/yzcode.html',
+          url: 'http://vip.nmgdz.com//login/login/yzcode.html',
           method: 'get',
           data: {
               values: {
@@ -243,7 +243,7 @@
      function getApicode(username,content) {
           var btn1 = $api.byId('btn1');
           api.ajax({
-          url: 'http://v.juhe.cn/sms/send?mobile='+username+'&tpl_id=110403&tpl_value='+content+'&key=34f64020b8376b88770b342f97869e04',
+          url: 'http://v.juhe.cn/sms/send?mobile='+username+'&tpl_id=118108&tpl_value='+content+'&key=34f64020b8376b88770b342f97869e04',
               method: 'get'
           },function(ret, err){
                   api.toast({
