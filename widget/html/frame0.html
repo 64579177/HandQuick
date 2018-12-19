@@ -692,8 +692,9 @@ var lrid = $api.byId('lrbox');
   var wzbid = $api.byId('wzbox_bottom');
   var wzbtpl = $api.byId('wzbtpl');
   api.ajax({
-      url: api_url+'/app/nav',
-      method: 'get',
+    //   url: api_url+'/app/nav',
+    url:'http://ky.qiangoujie.com/app/nav',
+    method: 'get',
   },function(ret, err){
       if (ret) {
         //渲染模板
