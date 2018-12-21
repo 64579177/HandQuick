@@ -18,12 +18,10 @@
         #footer ul li.active{ color: #f52737; }
         #footer ul li:nth-child(1){ background-image: url(./image/shouye.png); }
         #footer ul li:nth-child(2){ background-image: url(./image/zhibo.png); }
-
         #footer ul li:nth-child(3){ background-image: url(./image/faxian.png); }
         #footer ul li:nth-child(4){ background-image: url(./image/wode.png); }
         #footer ul li:nth-child(1).active{ background-image: url(./image/shouye2.png); }
         #footer ul li:nth-child(2).active{ background-image: url(./image/zhibo2.png); }
-
         #footer ul li:nth-child(3).active{ background-image: url(./image/faxian2.png); }
         #footer ul li:nth-child(4).active{ background-image: url(./image/wode2.png); }
         .flex-con{
@@ -32,11 +30,27 @@
         }
 
 
+/*文字渐变动画*/
+        .masked{
+              text-align: center;
+              background-image: -webkit-linear-gradient(left, #ff5e3e, #c00e59 25%, #ff1679 50%, #c00e59 75%, #ff5e3e);
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+              -webkit-background-size: 200% 100%;
+              -webkit-animation: masked-animation 5s infinite linear;
+            }
+          @-webkit-keyframes masked-animation {
+               0%{ background-position: 0 0;}
+               100% { background-position: -100% 0;}
+          }
+
+
+          /*文字渐变动画*/
 
     </style>
     <script type="text/javascript">
 
-      localStorage.setItem('api_url',"http://vip.nmgdz.com/");
+      localStorage.setItem('api_url',"http://movie.39zu.cn");
     </script>
 </head>
 <body>
@@ -50,8 +64,7 @@
 
 
     <ul>
-      <li class="border-b active">      
-	  <a class="aui-navBar-item masked" id="tietle" style="color: #212121;">美逛视界</a></li>
+      <li class="border-b active">      <a class="aui-navBar-item masked"   id="tietle" > 聚视界  <i class="icon icon-Disconnect-r" style=" margin-left: 10px; "></i> </a> </li>
       <li class="border-b">     <a class="aui-navBar-item">影视大厅</a> </li>
       <li class="border-b">     <a class="aui-navBar-item">福利中心</a> </li>
       <li class="border-b">     <a class="aui-navBar-item">会员中心</a> </li>
@@ -89,7 +102,9 @@
     <div id="footer" class="border-t" >
         <ul class="flex-wrap" style="font-weight:bold">
             <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con active" >首页</li>
-            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >直播</li>
+            
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >大厅</li>
+           
             <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >福利</li>
             <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >我的</li>
         </ul>
@@ -120,7 +135,7 @@
 
 <script type="text/x-dot-template" id="hongbaotpl">
 
-<img src="http://vip.nmgdz.com//{{=it.picurl}}" style="position: absolute;width: 1.5rem;top: 0.3rem;right: 0.5rem;" onclick="toBanner('{{=it.linkurl}}')">{{=it.name}}
+<img src="http://movie.39zu.cn/{{=it.picurl}}" style="position: absolute;width: 1.5rem;top: 0.3rem;right: 0.5rem;" onclick="toBanner('{{=it.linkurl}}')">{{=it.name}}
 </script>
 
 <script type="text/javascript" src="script/api.js"></script>
@@ -305,7 +320,7 @@
 
 
                         api.ajax({
-                            url: 'http://vip.nmgdz.com//AppHello.html',
+                            url: 'http://movie.39zu.cn/AppHello.html',
                             method: 'get'
                         },function(ret, err){
                             if (ret) {
@@ -723,7 +738,6 @@ function ConnectionDetectionWithServer() {
     }
 
 //////////////////////   获取FRAME页面 方法    GetfunIniGroup     E //////////////////////
-
 
 
 

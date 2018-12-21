@@ -39,7 +39,7 @@
       <li class="myui-from-list-item">
         <div class="myui-code">
           <input id="username" type="tel" minlength="11" maxlength="11" placeholder="输入手机号码" class="myui-from-code-input">
-          <button id="btn1" type="button" name="button" style="width:20%;float:left;height: 2.2rem;" class="myui-from-code-button" onclick="getCode()">获取</button>		  
+          <button id="btn1" type="button" name="button" style="width:20%;float:left;height: 2.2rem;" class="myui-from-code-button" onclick="getCode()">获取</button>
         </div>
       </li>
       <li class="myui-from-list-item">
@@ -206,7 +206,7 @@
       var content = escape('#code#='+code_data);
       //alert(content);
       api.ajax({
-          url: 'http://vip.nmgdz.com//login/login/yzcode.html',
+          url: 'http://movie.39zu.cn/login/login/yzcode.html',
           method: 'get',
           data: {
               values: {
@@ -240,7 +240,7 @@
     function getApicode(username,content) {
       var btn1 = $api.byId('btn1');
       api.ajax({
-          url: 'http://v.juhe.cn/sms/send?mobile='+username+'&tpl_id=118108&tpl_value='+content+'&key=34f64020b8376b88770b342f97869e04',
+          url: 'http://v.juhe.cn/sms/send?mobile='+username+'&tpl_id=96747&tpl_value='+content+'&key=c3cc656a21474ac926e71d40e4456553',
           method: 'get'
       },function(ret, err){
               api.toast({

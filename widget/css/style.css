@@ -747,12 +747,12 @@ a {
 
 .aui-navBar-item-s {
   height: 44px;
-  min-width: 18%;
+  min-width: 15%;
   -webkit-box-flex: 0;
-  -webkit-flex: 0 0 18%;
-  -ms-flex: 0 0 18%;
-  flex: 0 0 18%;
-  padding: 0 0.1rem;
+  -webkit-flex: 0 0 15%;
+  -ms-flex: 0 0 15%;
+  flex: 0 0 15%;
+  padding: 0 0.3rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -810,7 +810,7 @@ a {
     -ms-flex-align: center;
     align-items: center;
     height: 44px;
-    width: 48%;
+    width: 50%;
 /*    margin-left: 25%;   */
 }
 

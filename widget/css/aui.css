@@ -17,6 +17,10 @@ html,body {
 	-webkit-user-select:none;
 	width: 100%;
 }
+*{
+  -webkit-user-select:auto !important;
+}
+
 body {
 	line-height: 1.5;
 	font-size: 0.8rem;
@@ -1268,11 +1272,9 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 .aui-grid .aui-grid-label {
 	display: block;
-    font-size: 0.65rem;
+    font-size: 0.5rem;
     position: relative;
-    margin-top: 0.4rem;
-    color: #000000;
-
+    margin-top: 0.25rem;
 }
 .aui-grid .aui-badge {
 	position: absolute;
@@ -2252,7 +2254,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 .aui-sharebox.aui-grid .aui-grid-label {
     font-size: 0.6rem;
-    color: #000000;
+    color: #757575;
 }
 .aui-sharebox-close-btn {
     width: 100%;
