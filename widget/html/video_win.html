@@ -310,6 +310,7 @@ var connectionType=api.connectionType;
     if(ret && ret.value){
       alert("getUrl");
       var value = ret.value;
+      alert(value.herf);
       huanxian(value.herf,value.title);
   }
   });
@@ -387,7 +388,7 @@ var connectionType=api.connectionType;
  }
 
  function playVideo(){
- 	//alert(223+dataurl2);
+ 	alert(jx_url2+dataurl2);
    api.hideProgress();
      var systemType = api.systemType;
      if (systemType == 'android') {
